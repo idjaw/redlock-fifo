@@ -14,14 +14,12 @@ Why would I use this ?
 The normal behavior of redlock-py is to `return false` on a existing lock. The mainstream approach is to 
 poll the lock until acquisition. This process has two downsides :
 
-1. It doesn't warranty that the first requester will be the first to get the lock.
-2. It doesn't warranty an access to the resource (a requester can wait indefenitely).
+1. It doesn't guarantee that the first requester will be the first to get the lock.
+2. It doesn't guarantee an access to the resource (a requester can wait indefenitely).
 
 To prevent [starvation](https://en.wikipedia.org/wiki/Starvation_%28computer_science%29), we add a simple FIFO queue 
-implemented in Redis managing access to the resource. This queue allows us to warranty access to a resource and warranty
+implemented in Redis managing access to the resource. This queue allows us to guarantee access to a resource and guarantee
  that the lock will be attribued in order of lock request.
-
-You can use this project in multi-threaded environment to prevent process starvation and warranty order of execution.
 
 Requirements
 ------------
